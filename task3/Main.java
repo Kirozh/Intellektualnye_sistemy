@@ -94,10 +94,6 @@ public class Main {
 		System.out.println("s: " + s);
 
 		System.out.println("result: " + (translateHexToDec(s)));
-
-
-		//System.out.print("result = " + Translate(s));
-
-
+		
 	}
 }
