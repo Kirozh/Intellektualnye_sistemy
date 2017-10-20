@@ -7,8 +7,8 @@ import java.nio.file.Paths;
 
 public class Main {
 
-    // is the path contain the keyword
-    public static boolean containKeyword(Path path, String keyword) {
+    
+    public static boolean searchingForKey(Path path, String keyword) {
         try {
             return Files.lines(path).anyMatch(line -> line.contains(keyword));
         }
@@ -18,12 +18,12 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        Path src = Paths.get("c:/src");
+        Path source = Paths.get("c:/src");
 
-        Files.walk(src)
+        Files.walk(source)
                 .filter(path -> !Files.isDirectory(path))
-                .filter(path -> Main.containKeyword(path, "transient"))
-                .filter(path -> Main.containKeyword(path, "volatile"))
+                .filter(path -> Main.searchingForKey(path, "transient"))
+                .filter(path -> Main.searchingForKey(path, "volatile"))
                 .forEachOrdered(System.out::println);
     }
 }
