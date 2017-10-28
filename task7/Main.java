@@ -18,7 +18,7 @@ public class Main {
                 lineCount++;
             }
         } catch (IOException e) {
-            //System.err.format("Could not read %s: %s%n", file, e);
+            //System.err.println("Could not read file");
             System.exit(1);
         } finally {
             if (reader != null) {
@@ -30,7 +30,7 @@ public class Main {
         int repeats = Integer.parseInt(args[1]);
         Random random = new Random();
         for (int i = 0; i < repeats; i++) {
-            System.out.format("%d: %s%n", i,
+            System.out.println(i+"\t"+
                     fileList.get(random.nextInt(lineCount-1)));
         }
     }
