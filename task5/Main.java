@@ -18,9 +18,9 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        Path source = Paths.get("c:/src");
+        Path p1 = Paths.get("c:/src");
 
-        Files.walk(source)
+        Files.walk(p1)
                 .filter(path -> !Files.isDirectory(path))
                 .filter(path -> Main.searchingForKey(path, "transient"))
                 .filter(path -> Main.searchingForKey(path, "volatile"))
