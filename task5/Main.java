@@ -17,7 +17,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Path p1 = Paths.get("c:/src");
 
         Files.walk(p1)
