@@ -1,32 +1,38 @@
-//package task6;
+package task6;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
 
-class Main{
-    public static void main(String args[])
+import java.io.IOException;
+import java.nio.file.*;
+import java.util.stream.Stream;
+
+
+
+public class Main {
+
+    public static long searchingForLetter(Path path, char letter)
     {
-    //String s=args[0];
-	System.out.println("Input letter: ");
-    	char letter=args[0].charAt(0);
-        try{
-        FileInputStream fis=new FileInputStream("Temp.txt");
-        BufferedInputStream bis=new BufferedInputStream(fis);
-        int i;
-        int count=0;
-        while((i=bis.read())!=-1)
-        {
-            char a=(char)i;
-            if(a==letter)
-            {
-                count++;
-            }
+        try {
+            Stream<String> lines=Files.lines(path);
+
+            return lines.filter(line -> line.contains(Character.toString(letter))).count();
         }
-        System.out.println("Letter " + letter +" appears in the file "+count+" times");
+        catch (IOException e) {
+            return -1;
+        }
     }
-    catch(Exception ex)
-    {
-        System.out.println(ex.getMessage());
-    }
+
+    public static void main(String[] args) {
+        // write your code here
+        Path p1 = Paths.get("d:\\temp.txt");
+        System.out.println("Input a letter");
+        char letter = args[0].charAt(0);
+        try {
+            System.out.println("letter" + letter + "appears in file " + searchingForLetter(p1, letter) + "times");
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
     }
 }
